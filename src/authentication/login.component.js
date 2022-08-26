@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import errorHandler from "../common/ErrorHandler";
@@ -21,9 +20,10 @@ export default class Login extends Component {
     };
   }
 
-  handleChange (event) {
+  handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value });
+      [event.target.name]: event.target.value
+    });
   }
 
   handleLogin(e) {
@@ -37,19 +37,19 @@ export default class Login extends Component {
 
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password)
-      .then(
-        () => {
-          this.props.history.push("/profile");
-          window.location.reload();
-        },
-        error => {
-          let resMessage = errorHandler(error)
-          this.setState({
-            loading: false,
-            message: resMessage
-          });
-        }
-      );
+        .then(
+          () => {
+            this.props.history.push("/profile");
+            window.location.reload();
+          },
+          error => {
+            let resMessage = errorHandler(error)
+            this.setState({
+              loading: false,
+              message: resMessage
+            });
+          }
+        );
     } else {
       this.setState({
         loading: false
@@ -59,9 +59,8 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
-        <div className="card card-container">
-
+      <div className="App">
+        <div className="App-body">
           <Form
             onSubmit={this.handleLogin}
             ref={c => {
