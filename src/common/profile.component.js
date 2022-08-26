@@ -4,23 +4,54 @@ import AuthService from "../authentication/auth.service";
 export default class Profile extends Component {
   constructor(props) {
     super(props);
+    const user = AuthService.getCurrentUser();
     this.state = {
-      currentUser: AuthService.getCurrentUser()
+      isAdminRole: user.roleName.includes("ROLE_ADMIN"),
+      isDoctorRole: user.roleName.includes("ROLE_DOCTOR"),
+      isPatientRole: user.roleName.includes("ROLE_PATIENT"),
+      currentUser: user
     };
   }
 
   render() {
-    const { currentUser } = this.state;
+    const { currentUser, isAdminRole, isDoctorRole, isPatientRole } = this.state;
     return (
-      <div className="container">
+      <div className="App">
+        <div className="App-body">
+          <header>
+            <h2 style={{ color: 'white' }}>
+              Hello <strong>{currentUser.username}</strong>, this is your profile page!<br /><br />
+            </h2>
+          </header>
 
-        <header className="jumbotron">
-          <h3>
-            Hello <strong>{currentUser.username}</strong> , this is your profile page!
-          </h3>
-        </header>
-
-      </div>
+          <div>Account details:<br /><br />
+            <p>Username: {currentUser.username}</p>
+            {
+              isAdminRole &&
+              <p>Name: {currentUser.adminName}</p>
+            }
+            {
+              isDoctorRole &&
+              <div>
+                <p>Name: {currentUser.doctorName}</p>
+                <p>Specialty: {currentUser.specialty}</p>
+              </div>
+            }
+            {
+              isPatientRole &&
+              <div>
+                <p>Name: {currentUser.patientName}</p>
+                <p>Personal identification code: {currentUser.personalIdentificationCode}</p>
+                <p>Sex: {currentUser.sex}</p>
+                <p>Birth date: {currentUser.birthDate}</p>
+              </div>
+            }
+            <p>Email: {currentUser.contactDetails.email}</p>
+            {currentUser.contactDetails.phone && <p>Phone: {currentUser.contactDetails.phone}</p>}
+            {currentUser.contactDetails.address && <p>Address: {currentUser.contactDetails.address}</p>}
+          </div >
+        </div>
+      </div >
     );
   }
 }
