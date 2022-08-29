@@ -114,7 +114,7 @@ export default class Register extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="birthDate">BirthDate</label>
+              <label htmlFor="birthDate">Birth Date</label>
               <input
                 type="text"
                 className="form-control"
@@ -185,7 +185,7 @@ export default class Register extends Component {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group"  style={{marginTop: 20}}>
               <button
                 className="btn btn-primary btn-block"
                 disabled={this.state.loading}

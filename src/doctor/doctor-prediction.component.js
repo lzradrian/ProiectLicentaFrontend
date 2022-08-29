@@ -179,10 +179,9 @@ function DoctorPredictionBoard() {
                     </Form.Item>
                 </Form>
 
-
-                {resultMessage &&
-                    <p>Result: {resultMessage}</p>
-                }
+                <p> Result: </p>
+                {resultMessage && <p>{resultMessage}</p>}
+                
             </div>
         </div>
     )
