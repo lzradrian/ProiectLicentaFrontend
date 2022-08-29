@@ -92,8 +92,8 @@ export default class Login extends Component {
               />
             </div>
 
-            <div className="form-group">
-              <button
+            <div className="form-group" style={{marginTop: 20}}>
+              <button 
                 className="btn btn-primary btn-block"
                 disabled={this.state.loading}
               >

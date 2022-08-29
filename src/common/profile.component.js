@@ -20,11 +20,11 @@ export default class Profile extends Component {
         <div className="App-body">
           <header>
             <h2 style={{ color: 'white' }}>
-              Hello <strong>{currentUser.username}</strong>, this is your profile page!<br /><br />
+              Hello <strong>{currentUser.username}</strong>, this is your profile page!<br /><br /><br /><br />
             </h2>
           </header>
 
-          <div>Account details:<br /><br />
+          <div><h4 style={{ color: 'white' }}>Account details:</h4><br/>
             <p>Username: {currentUser.username}</p>
             {
               isAdminRole &&
