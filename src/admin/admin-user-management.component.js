@@ -1,6 +1,6 @@
 import "antd/dist/antd.css";
 import { Button, Table, Modal, Input, Form, Alert, Select, DatePicker, Switch } from "antd";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import AdminService from "./admin.service";
 import errorHandler from "../common/ErrorHandler";
@@ -173,6 +173,9 @@ function UserManagementBoard() {
 
         const handleUpdateUser = (user) => {
             user.username = editingUser?.username;
+            user.birthDate = editingUser?.birthDate;
+            user.personalIdentificationCode = editingUser?.personalIdentificationCode;
+            user.sex = editingUser?.sex;
             if (user.passwordInputValue) {
                 user.password = user.passwordInputValue;
                 user.passwordInputValue = null;
